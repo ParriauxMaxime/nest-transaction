@@ -1,0 +1,15 @@
+name: Format & Lint & Test checks
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yarn
+        run: yarn
+
+      - name: Format
+        run: yarn format:check
+
+      - name: Lint
+        run: yarn lint

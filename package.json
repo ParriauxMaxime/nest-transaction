@@ -1,0 +1,40 @@
+{
+  "name": "nest-transaction",
+  "version": "0.0.1",
+  "description": "A transaction decorator for typeorm using nestjs dependency injection style",
+  "main": "dist/Transaction.js",
+  "types": "lib/Transaction.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Maxime Parriaux",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "optionalDependencies": {
+    "@nestjs/common": "^8.1.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
+    "typeorm": "^0.2.38"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn clean && NODE_ENV='production' webpack --config webpack.config.js",
+    "lint": "eslint ./lib --fix",
+    "format": "yarn prettier 'lib/**/*.{ts,js,json,md,yml}'",
+    "format:check": "yarn format --list-different",
+    "format:write": "yarn format --write"
+  },
+  "repository": "https://github.com/ParriauxMaxime/nest-transaction"
+}

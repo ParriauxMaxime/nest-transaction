@@ -1,0 +1,24 @@
+name: Publish nest-transaction package
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.18.0'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Yarn
+         run: NODE_ENV=production yarn --dev --ignore-optional
+        run: NODE_ENV=production yarn build
+
+      - name: Publish package
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
